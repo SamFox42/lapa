@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Дай Лапу — продукт</title>
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    :root {
+  --gap: 16px;
+  --ing-h: 64px;      /* фиксированная высота для всех ингредиентов */
+  --pack-w: 360px;    /* максимальная ширина пачки */
+  --weight-h: 40px;   /* высота блока с весом */
+}
+
+.product-wrap {
+  padding: 24px 0;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  grid-template-rows: auto auto;
+  gap: var(--gap);
+  align-items: flex-start;
+}
+
+.product-title {
+  margin: 0 0 12px;
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 700;
+}
+
+.name-and-weight {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.name-img {
+  max-width: var(--pack-w);
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.weight-img {
+  height: var(--weight-h);
+  width: auto;
+  object-fit: contain;
+}
+
+.ingredients-col {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-start;  /* прижаты к левому краю */
+}
+
+.ingredients-col img {
+  height: var(--ing-h);
+  width: auto;
+  object-fit: contain;
+}
+
+.composition-img,
+.feeding-img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.name-area { grid-column: 1; grid-row: 1; }
+.ingredients-area { grid-column: 2; grid-row: 1; }
+.composition-area { grid-column: 1; grid-row: 2; }
+.feeding-area { grid-column: 2; grid-row: 2; }
+.back-btn {
+  background: none;
+  border: none;
+  color: #555;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 12px;
+  transition: color 0.2s;
+}
+.back-btn:hover { color: #000; }
+
+.card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.section-title {
+  font-size: 18px;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.ingredients-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  padding-left: 8px;
+  border-left: 3px solid #f0f0f0;
+}
+
+.ingredients-col img {
+  height: 60px;
+  object-fit: contain;
+}
+
+  /* 1) Пачка: реально БОЛЬШАЯ и ВЫШЕ */
+  .product-grid .pack-area { 
+    grid-column: 2; 
+    grid-row: 2; 
+    position: relative; 
+    z-index: 1; 
+    margin-top: -160px !important; /* пробиваем всё */
+  }
+  .product-grid .pack-area img.pack-img {
+    position: relative;
+    width: 110% !important;     /* чуть за рамку сетки */
+    max-width: 400px !important;/* БОЛЬШЕ ПАЧКУ */
+    height: auto !important;
+    transform: rotate(0deg) translateY(-60px) !important; /* выше и повернута */
+  }
+
+  /* 2) Feeding: поднять и положить НАД пачкой, независимо от неё */
+  .product-grid .feeding-area {
+    grid-column: 2;
+    grid-row: 3;
+    position: relative;
+    transform: translateY(-220px) !important; /* поднимаем, не завязано на пачку */
+    z-index: 5 !important;                    /* поверх пачки */
+    border-radius: 14px;
+    padding: 16px;
+    width: 96%;
+    margin: 0 auto;
+  }
+
+  /* 3) Ингредиенты остаются сверху справа */
+  .product-grid .ingredients-area {
+    grid-column: 2;
+    grid-row: 1;
+    position: relative;
+    z-index: 6; /* выше всех правых блоков */
+  }
+
+  /* 4) Композиция слева как была */
+  .product-grid .composition-area {
+    grid-column: 1;
+    grid-row: 2 / span 2;
+    position: relative;
+    z-index: 0;
+  }
+
+  .pack-area {
+    grid-column: 2;
+    grid-row: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .pack-img {
+    position: relative;
+    width: 150% !important;      /* пачка реально больше */
+    max-width: 1000px !important; /* ограничитель, если экран широкий */
+    transform: rotate(0deg) translateY(-60px); /* чуть повернута и выше */
+    transition: transform 0.4s ease;
+  }
+.feeding-area {
+  position: relative;
+  top: 283px; /* увеличивай число — таблица опускается ниже */
+}
+.pack-img {
+  position: relative;
+  top: 180px; /* положительное значение — опускает вниз */
+}
+
+</style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="container">
+        <a href="index.html" class="logo">
+          <img src="images/logo.png" alt="Дай Лапу">
+        </a>
+        <ul class="nav-menu">
+          <li><a href="cats.html">Кошки</a></li>
+          <li><a href="dogs.html">Собаки</a></li>
+          <li><a href="where-to-buy.html">Где купить</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+<main>
+  <section class="product-wrap">
+    <div class="container">
+      <button class="back-btn" onclick="history.back()">← Назад</button>
+      <h1 id="product-title" class="product-title"></h1>
+
+      <div class="product-grid card">
+        <div class="name-area">
+          <div class="name-and-weight">
+            <img id="name-img" class="name-img" alt="Пачка">
+            <img id="weight-img" class="weight-img" alt="Вес">
+          </div>
+        </div>
+        
+        <div class="pack-area">
+          <div id="pack-slot"></div>
+        </div>
+
+        <div class="ingredients-area">
+          <h2 class="section-title">Ингредиенты</h2>
+          <div id="ingredients-col" class="ingredients-col"></div>
+        </div>
+
+        <div class="composition-area">
+          <h2 class="section-title">Состав</h2>
+          <img id="composition-img" class="composition-img" alt="Состав">
+        </div>
+
+        <div class="feeding-area">
+          <h2 class="section-title">Рекомендации по кормлению</h2>
+          <img id="feeding-img" class="feeding-img" alt="Рекомендации по кормлению">
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Дай Лапу. Натуральные корма для ваших любимцев</p>
+            <p>Произведено ООО МИП НТР по заказу ИП БАЛАЯН Г.Г.</p>
+    </div>
+  </footer>
+
+  <script src="js/product.js"></script>
+</body>
+</html>

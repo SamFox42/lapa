@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корма для кошек - Дай Лапу</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="index.html" class="logo">
+                    <img src="images/logo.png" alt="Дай Лапу">
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="cats.html" class="active">Кошки</a></li>
+                    <li><a href="dogs.html">Собаки</a></li>
+                    <li><a href="where-to-buy.html">Где купить</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="category-header">
+            <div class="container">
+                <h1>Корма для кошек</h1>
+                <img src="images/cat1.png" alt="Кошка" class="category-image" style="
+                position: absolute;
+                top: 10;
+                right: 0;
+                height: 700px;
+                object-fit: contain;
+                z-index: -1;
+                ">
+            </div>
+        </section>
+
+        <section class="products">
+            <div class="container">
+                <div id="productsContainer" class="products-grid" data-category="cats"></div>
+                <div class="center-button">
+                    <button id="loadMore" class="btn btn-secondary">Показать ещё</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Дай Лапу. Натуральные корма для ваших любимцев</p>
+            <p>Произведено ООО МИП НТР по заказу ИП БАЛАЯН Г.Г.</p>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
