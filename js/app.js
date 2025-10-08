@@ -7,6 +7,14 @@ const productDatabase = {
         { 
             id: 'cat-dry-adult-beef-turkey', 
             file: 'products/cats/dry-adult-beef-turkey.html' 
+        },
+        { 
+            id: 'cat-dry-sterilized-beef', 
+            file: 'products/cats/dry-sterilized-beef.html' 
+        },
+        { 
+            id: 'cat-dry-adult-duck', 
+            file: 'products/cats/dry-adult-duck-beef-turkey.html' 
         }
     ],
     dogs: [

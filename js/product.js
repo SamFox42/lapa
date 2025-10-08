@@ -4,7 +4,9 @@ const productDB = {
   "dry-adult-beef": { title: "Дай Лапу для взрослых собак средних и крупных пород с говядиной, яблоком и морковью" },
   "dry-adult-duck-beef-turkey": { title: "Дай Лапу для взрослых собак с уткой, говядиной и индейкой" },
   "dry-sterilized-duck-turkey": { title: "Дай Лапу для стерилизованных кошек с уткой и индейкой" },
-  "dry-adult-beef-turkey": { title: "Дай Лапу для взрослых кошек с говядиной и индейкой" }
+  "dry-adult-beef-turkey": { title: "Дай Лапу для взрослых кошек с говядиной и индейкой" },
+  "dry-sterilized-beef": {title: "Дай Лапу для стерестерилизованных кошек с говядиной"},
+  "dry-adult-duck": {title: "Дай Лапу для взрослых кошек с уткой, говядиной и индейкой"}
 };
 
 function getParam(key){return new URLSearchParams(location.search).get(key);}
